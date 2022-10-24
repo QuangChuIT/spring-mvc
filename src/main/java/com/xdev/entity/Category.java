@@ -1,10 +1,12 @@
 package com.xdev.entity;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -12,8 +14,12 @@ import java.io.Serializable;
 public class Category extends AbstractEntity<Long> implements Serializable {
 
     @Column(name = "title", nullable = false)
-    @NotEmpty(message = "{category.title.empty}")
+    @NotEmpty
+    @Size
+    @Email
     private String title;
+
+
     @Column(name = "slug", nullable = false)
     private String slug;
 
